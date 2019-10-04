@@ -219,7 +219,7 @@ async def on_pr_action_button_click(
         ).replace('🚧', '')
 
     await github_api.patch(
-        pr_update_uri,
+        pr_api_uri,
         data={
             'title': new_title,
         },
