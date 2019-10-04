@@ -84,6 +84,7 @@ async def on_pr_check_wip(
 
     check_runs_base_uri = f'{repo_url}/check-runs'
 
+    github_api = RUNTIME_CONTEXT.app_installation_client
     resp = await github_api.post(
         check_runs_base_uri,
         preview_api_version='antiope',
@@ -99,7 +100,6 @@ async def on_pr_check_wip(
         f'{check_runs_base_uri}/{resp["id"]:d}'
     )
 
-    github_api = RUNTIME_CONTEXT.app_installation_client
     resp = await github_api.patch(
         check_runs_updates_uri,
         preview_api_version='antiope',
