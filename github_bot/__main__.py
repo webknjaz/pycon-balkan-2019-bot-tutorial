@@ -163,18 +163,18 @@ async def on_pr_check_wip(
                     'https://farm3.staticflickr.com'
                     '/2150/2101058680_64fa63971e.jpg)',
             },
+            'actions': [
+                {
+                    'label': 'WIP it!',
+                    'description': 'Mark the PR as WIP',
+                    'identifier': 'wip',
+                } if not is_wip_pr else {
+                    'label': 'UnWIP it!',
+                    'description': 'Remove WIP mark from the PR',
+                    'identifier': 'unwip',
+                },
+            ],
         },
-        'actions': [
-        {
-            'label': 'WIP it!',
-            'description': 'Mark the PR as WIP',
-            'identifier': 'wip',
-        } if not is_wip_pr else {
-            'label': 'UnWIP it!',
-            'description': 'Remove WIP mark from the PR',
-            'identifier': 'unwip',
-        },
-    ],
     )
 
 @process_event_actions('check_run', {'requested_action'})
