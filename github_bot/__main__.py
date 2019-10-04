@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 @process_event_actions('pull_request', {'closed'})
 @process_webhook_payload
-async def on_issue_opened(
+async def on_pr_merged(
         *,
         action, number, pull_request,
         repository, organization,
